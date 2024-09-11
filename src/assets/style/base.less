@@ -1,0 +1,208 @@
+/* 色板 */
+:root {
+  // 变量后面的数字越大就越弱
+  --its-white: #ffffff;
+  --its-white-1: #f8f8f8;
+  --its-white-2: #f2f2f2;
+  --its-white-3: #e0e0e0;
+
+  --its-black: rgba(0, 0, 0, 0.88);
+  --its-black-1: rgba(0, 0, 0, 0.65);
+  --its-black-2: rgba(0, 0, 0, 0.45);
+  --its-black-3: rgba(0, 0, 0, 0.25);
+
+  --its-divider-light-1: rgba(60, 60, 60, 0.29);
+  --its-divider-light-2: rgba(60, 60, 60, 0.12);
+
+  --its-divider-dark-1: rgba(84, 84, 84, 0.65);
+  --its-divider-dark-2: rgba(84, 84, 84, 0.48);
+
+  --its-hover-bg: rgba(24, 144, 255, 0.06);
+
+  // 浅色主题
+  --its-text-light: var(--its-black);
+  --its-text-light-1: var(--its-black-1);
+  --its-text-light-2: var(--its-black-2);
+  --its-bg-light: rgb(255, 255, 255);
+
+  // 深色主题
+  --its-text-dark: var(--its-white);
+  --its-text-dark-1: var(--its-white-1);
+  --its-text-dark-2: var(--its-white-2);
+  --its-bg-dark: rgb(0, 21, 41);
+
+  // 浮层阴影
+  --its-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  // 成功色
+  --its-color-success: #52c41a;
+  // 错误色
+  --its-color-error: #ff4d4f;
+  // 警告色
+  --its-color-warning: #faad14;
+}
+
+/* 此项目的语义变量 */
+// 默认是浅色主题
+:root {
+  --color-background: var(--its-bg-light);
+  --color-background-1: var(--its-white-1);
+  --color-background-2: var(--its-white-2);
+
+  --color-border: var(--its-divider-light-2);
+  --color-border-hover: var(--its-divider-light-1);
+
+  --color-text: var(--its-text-light);
+  --color-text-1: var(--its-text-light-1);
+  --color-text-2: var(--its-text-light-2);
+  --color-text-3: var(--its-text-light-3);
+}
+
+// 深色主题
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--its-bg-dark);
+    --color-background-1: var(--its-black-1);
+    --color-background-2: var(--its-black-2);
+
+    --color-border: var(--its-divider-dark-2);
+    --color-border-hover: var(--its-divider-dark-1);
+
+    --color-text: var(--its-text-dark);
+    --color-text-1: var(--its-text-dark-1);
+    --color-text-2: var(--its-text-dark-2);
+    --color-text-3: var(--its-text-dark-3);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.5;
+  font-family: 'PingFang SC', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+ol,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+a {
+  color: #363636;
+  text-decoration: none;
+  outline: none;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+/** 
+* 解决 input:-internal-autofill-selected 带的background-color
+*/
+input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px #fff inset;
+}
+
+/* 重置滚动条样式 start */
+@scroll-bar-size: 6px;
+/* 定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+  width: @scroll-bar-size;
+  height: @scroll-bar-size;
+  background-color: transparent;
+}
+
+/* 定义滚动条轨道 */
+::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+/* 定义滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background-color: #bbb;
+  }
+
+  &:active {
+    background-color: #888;
+  }
+}
+/* 重置滚动条样式 end */
+
+/* 增删改查 start */
+.page-search-wrapper {
+  .page-search-buttons {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+
+    button {
+      margin-right: 8px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .ant-btn {
+    display: flex;
+    align-items: center;
+  }
+
+  .ant-form-item {
+    margin-bottom: 24px;
+  }
+
+  .ant-form-item-control {
+    width: 220px;
+  }
+
+  .two-input {
+    .ant-form-item-control {
+      width: 440px;
+    }
+  }
+}
+
+/* 列表上方操作按钮区域 */
+.page-operator {
+  margin-bottom: 20px;
+
+  button {
+    margin-right: 8px;
+  }
+}
+
+/* 弹框 */
+.modal-form {
+  .ant-form-item,
+  .ant-select {
+    width: 100%;
+  }
+}
+
+/* 增删改查 end */
